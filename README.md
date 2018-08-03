@@ -42,6 +42,12 @@ $config = array(
 );
 $qc = new Aw\SnsConnect\QQ\QC($config);
 echo $qc->qq_login();
+//https://graph.qq.com/oauth2.0/authorize?
+response_type=code&
+client_id=&
+redirect_uri=&
+state=c07c641645c15af7261ecf14b8527f47&
+scope=get_user_info,add_share,list_album,add_album,upload_pic,add_topic,add_one_blog,add_weibo,check_page_fans,add_t,add_pic_t,del_t,get_repost_list,get_info,get_other_info,get_fanslist,get_idolist,add_idol,del_idol,get_tenpay_addr
 
 ```
 

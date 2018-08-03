@@ -24,7 +24,7 @@ class Recorder
             $this->error->showError("20001");
         }
 
-        if (isset($_SESSION['QC_userData'])) {
+        if (!isset($_SESSION['QC_userData'])) {
             self::$data = array();
         } else {
             self::$data = $_SESSION['QC_userData'];

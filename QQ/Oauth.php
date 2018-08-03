@@ -30,7 +30,7 @@ class Oauth
     public function qq_login($callbakc_url = '')
     {
         $appid = $this->recorder->readInc("appid");
-        $callback = $callbakc_url ?: $this->recorder->readInc("callback");
+        $callback = $callbakc_url ? $callbakc_url : $this->recorder->readInc("callback");
         $scope = $this->recorder->readInc("scope");
 
         //-------生成唯一随机串防CSRF攻击
@@ -45,17 +45,20 @@ class Oauth
             "state" => $state,
             "scope" => $scope
         );
-
         return $this->urlUtils->combineURL(self::GET_AUTH_CODE_URL, $keysArr);
     }
 
     public function qq_callback()
     {
+        if(($token = $this->recorder->read("access_token")))
+        {
+            return $token;
+        }
         $state = $this->recorder->read("state");
 
         //--------验证state防止CSRF攻击
         if ($_GET['state'] != $state) {
-            $this->error->showError("30001");
+            return $this->error->showError("30001");
         }
 
         //-------请求参数列表
@@ -69,8 +72,9 @@ class Oauth
 
         //------构造请求access_token的url
         $token_url = $this->urlUtils->combineURL(self::GET_ACCESS_TOKEN_URL, $keysArr);
+        //var_dump($token_url);
         $response = $this->urlUtils->get_contents($token_url);
-
+        //var_dump($response);
         if (strpos($response, "callback") !== false) {
 
             $lpos = strpos($response, "(");

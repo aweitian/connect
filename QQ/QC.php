@@ -235,6 +235,7 @@ class QC extends Oauth
             else
                 $response = $this->urlUtils->post($baseUrl, $keysArr, 0);
         } else if ($method == "GET") {
+            //var_dump($baseUrl, $keysArr);
             $response = $this->urlUtils->get($baseUrl, $keysArr);
         }
 
@@ -261,12 +262,15 @@ class QC extends Oauth
         $argsList = $this->APIMap[$name][1];
         $method = isset($this->APIMap[$name][2]) ? $this->APIMap[$name][2] : "GET";
 
+
+
         if (empty($arg)) {
             $arg[0] = null;
         }
 
         //对于get_tenpay_addr，特殊处理，php json_decode对\xA312此类字符支持不好
         if ($name != "get_tenpay_addr") {
+            //var_dump($arg[0], $argsList, $baseUrl, $method);
             $response = json_decode($this->_applyAPI($arg[0], $argsList, $baseUrl, $method), true);
             $responseArr = $this->objToArr($response);
         } else {
