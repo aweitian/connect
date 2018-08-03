@@ -1,9 +1,5 @@
 # QQ登录
 
-## 参考 https://github.com/kuange/qqconnect
-
-## 修改上面的依赖
-
 ## 安装方法
 
 composer安装:
@@ -64,3 +60,7 @@ $qc = new Aw\SnsConnect\QQ\QC($config);
 $info = $qc->get_user_info();
 var_dump($info);
 ```
+
+
+## 参考 https://github.com/kuange/qqconnect
+
