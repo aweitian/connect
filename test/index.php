@@ -11,15 +11,15 @@ require "../QQ/Recorder.php";
 require "../QQ/URL.php";
 require "../QQ/QC.php";
 
-$app_id = "101454639";
-$app_key = "69bb04cdcb24a84ea0a7e79bf76ad2a3";
+$app_id = "********";
+$app_key = "*************";
 
 $config = array(
     'access_token' => '',
     'openid' => '',
     'appid' => $app_id,
     'appkey' => $app_key,
-    'callback' => 'http://3g.dailian66.com/login/qq',
+    'callback' => 'http://auth.example.com/login/qq',
     'scope' => 'get_user_info,add_share,list_album,add_album,upload_pic,add_topic,add_one_blog,add_weibo,check_page_fans,add_t,add_pic_t,del_t,get_repost_list,get_info,get_other_info,get_fanslist,get_idolist,add_idol,del_idol,get_tenpay_addr',
     'errorReport' => true
 );
