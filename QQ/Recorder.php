@@ -15,7 +15,8 @@ class Recorder
 
     public function __construct($config)
     {
-        session_start();
+        if (!session_id())
+            session_start();
         $this->error = new ErrorCase();
 
         //-------读取配置文件
